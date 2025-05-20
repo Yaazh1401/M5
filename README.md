@@ -1,19 +1,44 @@
-EX-21-POINTERS
-# AIM:
-Write a C program to convert a 23.65 into 25 using pointer
+# EX-21-POINTERS
+## AIM:
+Write a C program to convert a floating point number into an integer:
+
 
 ## ALGORITHM:
-1.	Declare a double variable to hold the floating-point number (23.65).
-2.	Declare a pointer to double to point to the address of the variable.
-3.	Use the pointer to modify the value to 25.0.
-4.	Print the modified value.
+Start
+
+Declare a variable num of type float
+
+Declare a variable int_num of type int
+
+Read a floating-point number from the user and store it in num
+
+Typecast num to an int and store the result in int_num
+
+Print the original floating-point number (up to 2 decimal places) and its integer equivalent
+
+End
+
+
 
 ## PROGRAM:
+```
+#include <stdio.h>
 
+int main() {
+    float num;
+    int int_num;
+    scanf("%f", &num);
+    int_num = (int)num;
+    printf("the integer equivalent of %.2f =%d\n", num, int_num);
+
+    return 0;
+}
+```
 ## OUTPUT:
  	
 
 
+![image](https://github.com/user-attachments/assets/eeb0d0dd-983f-44fd-be35-b26eda696db8)
 
 
 
@@ -24,7 +49,7 @@ Write a C program to convert a 23.65 into 25 using pointer
 
 
 ## RESULT:
-Thus the program to convert a 23.65 into 25 using pointer has been executed successfully.
+Thus the program to convert a floating point number into an integer has been executed successfully.
  
  
 
@@ -33,20 +58,52 @@ Thus the program to convert a 23.65 into 25 using pointer has been executed succ
 
 ## AIM:
 
-Write a C program to calculate the Product of first 12 natural numbers using Recursion
+Write a C program to calculate the Sum of first n natural numbers using Recursion
 
 ## ALGORITHM:
+Start
 
-1.	Define a recursive function calculateProduct that takes an integer parameter n.
-2.	Return n multiplied by the result of the calculateProduct function called with n - 1.
-3.	Declare an integer variable n and an unsigned long long variable product.
-4.	Initialize n with the value 12 (for the first 12 natural numbers).
-5.	Call the calculateProduct function with n and store the result in the product variable.
-6.	Print the result, indicating it is the product of the first 12 natural numbers.
+Define a recursive function sumOfNaturalNumbers(n):
 
+If n == 0, return 0 (base case)
+
+Else, return n + sumOfNaturalNumbers(n - 1)
+
+In the main function:
+
+Declare an integer variable num
+
+Read an integer value from the user and store it in num
+
+Call the recursive function sumOfNaturalNumbers(num) and store the result in sum
+
+Print the value of sum
+
+End
 ## PROGRAM:
+```
+#include <stdio.h>
+int sumOfNaturalNumbers(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    else {
+        return n + sumOfNaturalNumbers(n - 1);
+    }
+}
+
+int main() {
+    int num;
+    scanf("%d", &num);
+        int sum = sumOfNaturalNumbers(num);
+        printf("Sum = %d\n", sum);
+    
+    return 0;
+}
+```
 ## OUTPUT:
-         		
+    ![image](https://github.com/user-attachments/assets/436bb78c-f25a-4b26-a95f-d127a0fd626b)
+     		
 ## RESULT:
 
 Thus the program has been executed successfully.
@@ -58,26 +115,72 @@ Thus the program has been executed successfully.
 
 ## AIM:
 
-Write C Program to find Sum of each row of a Matrix
+Write a C Program to find Sum of Diagonal Elements of a Matrix[3x3]
 
 ## ALGORITHM:
+Start
 
-1.	Declare and initialize the matrix with the desired values.
-2.	Create a loop to iterate through each row of the matrix.
-3.	Inside the loop, calculate the sum of the elements in each row.
-4.	Print the sum for each row.
+Declare a 3x3 matrix (matrix[3][3])
+
+Declare variables i, j, sum (initialize sum = 0)
+
+Read the number of rows and cols from the user
+
+Input matrix elements:
+
+For i from 0 to rows - 1
+
+For j from 0 to cols - 1
+
+Read matrix[i][j]
+
+Compute sum of diagonal elements:
+
+For i from 0 to 2 (fixed for 3x3)
+
+Print matrix[i][i]
+
+Add matrix[i][i] to sum
+
+Print the total sum of diagonal elements
+
+End
 
 ## PROGRAM:
+```
+#include <stdio.h>
 
+int main() {
+    int matrix[3][3];
+    int i, j, sum = 0;
+    int rows, cols;
+    scanf("%d %d", &rows, &cols);
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    for(i = 0; i < 3; i++) {
+        printf("%d\n", matrix[i][i]);
+        sum += matrix[i][i];
+    }
+    printf("The Sum of Diagonal Elements of a Matrix =  %d\n", sum);
+
+    return 0;
+}
+```
 
 
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/5f51e913-bf79-4339-84f9-4c24819f965a)
 
 
  
  
 
  ## RESULT
+ Thus the program has been executed successfully.
+ 
  
 
 
@@ -96,9 +199,37 @@ Write C program for the below pyramid string pattern. Enter a string: PROGRAM En
 5.	End the program.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char str[100];
+    int rows, str_len, index = 0;
+    scanf("%s", str);
+    scanf("%d", &rows);
+
+    str_len = strlen(str);
+
+    for (int i = 1; i <= rows + 1; i++) {
+        printf("  ");
+        for (int space = 1; space <= rows + 1 - i; space++) {
+            printf(" ");
+        }
+        for (int j = 1; j <= i; j++) {
+            printf("%c ", str[index % str_len]);
+            index++;
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+```
 
  ## OUTPUT
+![image](https://github.com/user-attachments/assets/a1c74952-284e-4607-8340-028b3a82f38e)
 
  
 
@@ -115,25 +246,53 @@ Thus the C program to String process executed successfully
 # EX -25 –DISPLAYING ARRAYS USING POINTERS
 ## AIM
 
-Write a c program to read and display an array of any 6 integer elements using pointer
+Write a C program to print string 'SAVEETHA' using pointer 
 
 ## ALGORITHM
-Step 1: Start the program.
-Step 2: Declare the following:
-•	Integer variable i for iteration.
-•	Integer variable n to store the number of elements.
-•	Integer array arr[10] to hold up to 10 elements.
-•	Integer pointer parr and initialize it to point to the array arr.
-Step 3: Read the value of n (number of elements) from the user.
-Step 4: Loop from i = 0 to i < n:
-•	Read an integer value and store it in the address parr + i using pointer arithmetic.
-Step 5: Loop from i = 0 to i < n:
-•	Print the element at *(parr + i) using pointer dereferencing.
-Step 6: End the program.
+Start
+
+Declare a character array str[100] to store the input string
+
+Declare a character pointer ptr
+
+Read the input string from the user and store it in str
+
+Initialize the pointer ptr to point to the beginning of str
+
+Print the message: "The entered string is :: "
+
+While the character pointed to by ptr is not the null character ('\0'):
+
+Print the character using putchar(*ptr)
+
+Move the pointer to the next character (ptr++)
+
+Print a newline character
+
+End
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    char str[100]; 
+    char *ptr;  
+    scanf("%s", str);
+    ptr = str;
+    printf("The entered string is :: ");
+    while (*ptr != '\0') {
+        putchar(*ptr);
+        ptr++;
+    }
+    printf("\n");
+
+    return 0;
+}
+
+```
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/c58fef4e-00ee-4acb-aec8-1d5e1a50c5a1)
 
  
 
